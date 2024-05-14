@@ -9,6 +9,8 @@ class Model:
         self._grafo = nx.Graph()
         self._idMap = {}  # forse inutile
         self._loadAllCountries()
+        for country in self._grafo.nodes:
+            self._idMap[country.CCode] = country
 
     def detNumNodes(self):
         return self._grafo.number_of_nodes()
@@ -29,7 +31,7 @@ class Model:
 
         results = set()
         for u, v in self._grafo.edges:
-            results.add((u, self._grafo.degree(u)))
+            results.add((self._idMap[u], self._grafo.degree(u)))
         return results
 
     def getComponentiConesse(self):

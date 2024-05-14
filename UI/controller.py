@@ -9,4 +9,19 @@ class Controller:
         self._model = model
 
     def handleCalcola(self, e):
-        pass
+
+        confini = self._model.getStatiConfinanti(self._view._txtAnno.value)
+        self._view._txt_result.clean()
+        if confini is not None:
+                self._view._txt_result.controls.append(ft.Text(f"Grafico creato correttamente"))
+        else:
+            self._view._txt_result.controls.append(ft.Text(f"Grafico NON e' stato creato correttamente"))
+
+        self._view._txt_result.controls.append(ft.Text(f"Il grafo ha {self._model.getComponentiConesse()} componenti connesse"))
+        self._view._txt_result.controls.append(ft.Text(f"Di seguito i dettagli sui nodi"))
+
+        for arco in confini:
+            self._view._txt_result.controls.append(ft.Text(f"{arco[0]} - {arco[1]} confini"))
+
+        self._view.update_page()
+

@@ -65,19 +65,22 @@ class Model:
         return DAO.getAllCountries(anno)
 
 
-    def inizializzazioneRicorsione(self, partenza):
-        results = []
-        results = self.recursion([], partenza)
-        return results
-
-    def recursion(self,parziale, nodo):
-        #condizione terminale
-        if( nodo degree==0)
-            parziale.append(nodo)
-            ####
-            print(nodo)
-            ####
-        else:
-            self._grafo.
+    # def inizializzazioneRicorsione(self, partenza):
+    #     results = []
+    #     results = self.recursion([], partenza, [])
+    #     return results
+    #
+    # def recursion(self,parziale, partenza, destinazioni):
+    #     #condizione terminale
+    #     if( parziale[ultimo_elem].degree==0)  #utlimo nodo aggiunto njell esplorazione
+    #         destinazioni.append(nodo)
+    #         ####
+    #         print(nodo)
+    #         ####
+    #     else:
+    #         parziale.append(self._grafo.successor)
+    #         self.recursion(parziale,parziale[ultimo_nodo], destinazioni)
+    #         parziale.pop()
+    #
 
 

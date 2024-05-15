@@ -28,7 +28,8 @@ class View(ft.UserControl):
         row1 = ft.Row([self._txtAnno, self._btnCalcola], alignment=ft.MainAxisAlignment.CENTER)
         self._page.controls.append(row1)
         #row 2
-        self._dd_StatoIn = ft.Dropdown(label="Stato")
+        self._dd_StatoIn = ft.Dropdown(label="Stato", options=[ft.dropdown.Option(key=None, text="Nessun stato")])
+        self._controller.loadDdStati()
         self._btnRicerca = ft.ElevatedButton(text="Ricarca raggiungibili",width=200, on_click=self._controller.handleRicerca)
         row2= ft.Row([self._dd_StatoIn, self._btnRicerca], alignment=ft.MainAxisAlignment.CENTER)
         self._page.controls.append(row2)

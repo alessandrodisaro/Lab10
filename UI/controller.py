@@ -10,7 +10,8 @@ class Controller:
         self._dd_stato_value = None
 
     def handleCalcola(self, e):
-
+        self._model.buildGraph(self._view._txtAnno.value)
+        print(len(self._model._idMap)) #############
         confini = self._model.getStatiConfinanti(self._view._txtAnno.value)
         self._view._txt_result.clean()
         if confini is not None:
@@ -19,7 +20,7 @@ class Controller:
             self._view._txt_result.controls.append(ft.Text(f"Grafico NON e' stato creato correttamente"))
 
         self._view._txt_result.controls.append(
-            ft.Text(f"Il grafo ha {self._model.getComponentiConesseNCC()} componenti connesse"))
+            ft.Text(f"Il grafo ha {self._model.getPartiConesseNCC()} componenti connesse"))
         self._view._txt_result.controls.append(ft.Text(f"Di seguito i dettagli sui nodi"))
 
         for arco in confini:
@@ -45,7 +46,7 @@ class Controller:
     # self._view.update_page()
 
     def loadDdStati(self):
-        stati = self._model.getTuttiStati()
+        stati = self._model._prendiStati(2017)
         for stato in stati:
             self._view._dd_StatoIn.options.append(
                 ft.dropdown.Option(key=stato.CCode, text=stato.StateNme, on_click=self.reaDdStato))
